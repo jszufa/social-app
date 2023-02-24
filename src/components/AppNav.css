@@ -1,0 +1,11 @@
+.MainNav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-link {
+    font-size: 1.2em;
+    text-decoration: none;
+    padding: 20px 15px;
+    color: black;
+}
