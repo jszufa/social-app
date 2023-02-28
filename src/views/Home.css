@@ -1,0 +1,17 @@
+.postList .loadMoreBtn {
+
+    margin-bottom: 40px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    color: white;
+    background-color: rgb(76, 76, 190);
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.postList .loadMoreBtn:hover {
+
+    background-color: #264364;
+    cursor: pointer;
+}
