@@ -9,6 +9,11 @@
     padding: 30px;
 }
 
+.loginForm .loginMsg {
+    flex-basis: 80%;
+    font-size: 0.8em;
+}
+
 .loginForm input {
     flex-basis: 80%;
     margin-bottom: 20px;
