@@ -7,9 +7,9 @@ import "./Home.css"
 function Home() {
 
     const [posts, setPosts] = useState([]);
-    const [user, setUser] = useState(null);
+    
 
-    useEffect(() => { getLatestPosts(); }, [user]);
+    useEffect(() => { getLatestPosts(); }, [/* user */]);
 
     const getLatestPosts = () => {
 
