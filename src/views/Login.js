@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 function Login(props) {
 
@@ -29,7 +30,7 @@ function Login(props) {
         )
             .then((response) => {
                 /* console.log(response); */
-                if (response.status == 200) {
+                if (response.status === 200) {
 
                     //zapisywanie użytkownika w local storage
                     localStorage.setItem('user-info', JSON.stringify(response.data))
@@ -59,14 +60,17 @@ function Login(props) {
 
     return (
 
-        <form className='loginForm' >
-            <p className='loginMsg' >{loginMessage}</p>
+        <div className="login">
+            {props.user && <Navigate to='/' />}
+            <form className='loginForm' >
+                <p className='loginMsg' >{loginMessage}</p>
 
-            <input type='text' placeholder='Username' name='username' onChange={(e) => { handleInputChange(e) }}></input>
-            <input type='text' placeholder='Password' name='password' onChange={(e) => { handleInputChange(e) }}></input>
-            
-            <button className='loginBtn' onClick={(e) => { handleSubmit(e) }}>Login</button>
-        </form>
+                <input type='text' placeholder='Username' name='username' onChange={(e) => { handleInputChange(e) }}></input>
+                <input type='text' placeholder='Password' name='password' onChange={(e) => { handleInputChange(e) }}></input>
+
+                <button className='loginBtn' onClick={(e) => { handleSubmit(e) }}>Login</button>
+            </form>
+        </div>
     )
 }
 

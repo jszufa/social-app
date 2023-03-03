@@ -29,8 +29,8 @@ function Home() {
             .then((response) => {
 
                 let olderPosts = response.data;
-                return (setPosts(posts.concat(olderPosts)));
-                //czy return jest tutaj w ogóle potrzebne?
+                setPosts(posts.concat(olderPosts));
+                
             });
 
     }

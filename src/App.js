@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <AppNav />
-      <AppRoutes setUser={setUser}/>
+      <AppRoutes setUser={setUser} user={user}/>
     </div>
   );
 }
