@@ -1,14 +1,24 @@
-import React, { useState }  from 'react';
+import React from 'react';
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 import './AppNav.css';
 
 function AppNav(props) {
 
-    //wstępna obsługa zmiany wyświetlania nawigacji przy zalogowaniu
-    const [loggedIn, setLogStatus] = useState(false);
+    const handleLogout = () => {
 
-    if (!loggedIn) {
+        axios.post(`https://akademia108.pl/api/social-app/user/logout`)
+            .then((response) => {
+                console.log(response.data);
+                localStorage.clear();
+                props.setUser('');
+            });
+    }
+
+
+
+    if (!props.user) {
         return (
             <nav className='MainNav'>
                 <NavLink className='nav-link' to="/">Home</NavLink>
@@ -21,7 +31,7 @@ function AppNav(props) {
         return (
             <nav className='MainNav'>
                 <NavLink className='nav-link' to="/">Home</NavLink>
-                <NavLink className='nav-link' to="/" onClick={()=>{setLogStatus(true)}}>Logout</NavLink>
+                <NavLink className='nav-link' to="/" onClick={() => { handleLogout() }}>Logout</NavLink>
             </nav>
         )
     }

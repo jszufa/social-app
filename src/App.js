@@ -7,9 +7,9 @@ import axios from "axios";
 function App() {
   const [user, setUser] = useState(localStorage.getItem('user-info') ? JSON.parse(localStorage.getItem('user-info')) : '');
   //dodałem ternary bo pojawiał się błąd przy pierwszym ładowaniu stronu w związku z JSON.parse i brakiem argumentu (pusty localStorage), zastanawiam się, czy da się to lepiej obejść.
-  
 
-  console.log(user);
+
+  /*  console.log(user); */
 
   axios.defaults.headers.common["Authorization"] = "Bearer " + (user ? user.jwt_token : "");
 
@@ -18,8 +18,8 @@ function App() {
 
   return (
     <div className="App">
-      <AppNav />
-      <AppRoutes setUser={setUser} user={user}/>
+      <AppNav setUser={setUser} user={user} />
+      <AppRoutes setUser={setUser} user={user} />
     </div>
   );
 }

@@ -7,7 +7,7 @@ import "./Home.css"
 function Home() {
 
     const [posts, setPosts] = useState([]);
-    
+
 
     useEffect(() => { getLatestPosts(); }, [/* user */]);
 
@@ -30,7 +30,7 @@ function Home() {
 
                 let olderPosts = response.data;
                 setPosts(posts.concat(olderPosts));
-                
+
             });
 
     }
