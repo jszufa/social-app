@@ -20,7 +20,6 @@ function AddPost(props) {
     const addPost = (e) => {
         e.preventDefault();
 
-        console.log (JSON.parse(localStorage.getItem('user-info')).username)
         //clearing textarea
         e.target.previousElementSibling.value = '';
 

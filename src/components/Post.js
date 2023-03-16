@@ -5,20 +5,7 @@ import './Post.css';
 function Post(props) {
 
 
-    const deletePost = () => {
 
-        axios.post(`https://akademia108.pl/api/social-app/post/delete`,
-            { "post_id": props.id }
-        )
-            .then((response) => {
-
-                console.log(response);
-                /* let newPosts = response.data;
-                setPosts(newPosts.concat(posts));
- */
-            });
-
-    }
 
     return (
         <div className='postBlock'>
@@ -29,8 +16,8 @@ function Post(props) {
             <p className='postLikes'>{props.post.likes.length}</p>
 
             {/* The delete button will be displayd only under the user's own posts */}
-            {props.post.user.username === /* JSON.parse(localStorage.getItem('user-info')) */props.user.username && 
-            <button className='deletePostBtn' onClick={() => { deletePost() }} >Delete post</button>}
+            {props.post.user.username === /* JSON.parse(localStorage.getItem('user-info')) */props.user.username &&
+                <button className='deletePostBtn' onClick={() => { props.deletePost(props.id) }} >Delete post</button>}
 
         </div>
 

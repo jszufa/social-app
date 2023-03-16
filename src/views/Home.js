@@ -50,6 +50,20 @@ function Home(props) {
 
     }
 
+    const deletePost = (id) => {
+
+        console.log(id)
+        axios.post(`https://akademia108.pl/api/social-app/post/delete`,
+            { "post_id": id }
+        )
+            .then((response) => {
+
+                setPosts(posts.filter((post) => post.id !== id));
+
+            });
+
+    }
+
 
 
 
@@ -60,7 +74,7 @@ function Home(props) {
             <AddPost getPrevPosts={getPrevPosts} />
             {posts.map((post) => {
                 return (
-                    <Post post={post} key={post.id} id={post.id} user={props.user} />
+                    <Post post={post} key={post.id} id={post.id} user={props.user} setPosts={setPosts} posts={posts} deletePost={deletePost} />
                 )
             })}
             <button className='loadMoreBtn' onClick={() => { getNextPosts() }}>Load more</button>
