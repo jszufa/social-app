@@ -5,8 +5,6 @@ import './Post.css';
 function Post(props) {
 
 
-
-
     return (
         <div className='postBlock'>
             <img src={props.post.user.avatar_url} alt="User's avatar" className='postAvatar' />

@@ -15,3 +15,51 @@
     background-color: #264364;
     cursor: pointer;
 }
+
+.postList .confirmationBox {
+    
+    width: 40%;
+    min-width: 200px;
+    background-color: rgb(231, 226, 226);
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 100;
+    border: 2px solid black;
+}
+
+.postList .confirmationBox p {
+    font-size: 1.4em;
+    font-weight: bold;
+
+}
+
+.postList .confirmationBox button {
+    color: white;
+    margin: 15px 15px;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+}
+
+.postList .confirmationBox .yesBtn {
+    background-color: green;
+}
+
+.postList .confirmationBox .yesBtn:hover {
+    background-color: rgba(0, 128, 0, 0.500);
+    cursor: pointer;
+}
+
+.postList .confirmationBox .noBtn {
+    background-color: red;
+}
+
+.postList .confirmationBox .noBtn:hover {
+    background-color: rgba(255, 0, 0, 0.500);
+    cursor: pointer;
+}
