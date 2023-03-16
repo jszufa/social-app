@@ -43,3 +43,18 @@
     text-align: right;
     margin: 5px
 }
+
+.postBlock .deletePostBtn {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    color: white;
+    background-color: rgb(76, 76, 190);
+    border: none;
+    border-radius: 5px;
+    padding: 12px 10px;
+}
+
+.postBlock .deletePostBtn:hover {
+    background-color: #264364;
+    cursor: pointer;
+}

@@ -5,7 +5,7 @@ import AddPost from '../components/AddPost';
 
 import "./Home.css"
 
-function Home() {
+function Home(props) {
 
     const [posts, setPosts] = useState([]);
 
@@ -53,15 +53,14 @@ function Home() {
 
 
 
-
     return (
 
         <div className='postList'>
             <h2>Home</h2>
-            <AddPost getPrevPosts={getPrevPosts}/>
+            <AddPost getPrevPosts={getPrevPosts} />
             {posts.map((post) => {
                 return (
-                    <Post post={post} key={post.id} />
+                    <Post post={post} key={post.id} id={post.id} user={props.user} />
                 )
             })}
             <button className='loadMoreBtn' onClick={() => { getNextPosts() }}>Load more</button>

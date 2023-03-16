@@ -20,13 +20,15 @@ function AddPost(props) {
     const addPost = (e) => {
         e.preventDefault();
 
-        /* console.log(postContent); */
+        console.log (JSON.parse(localStorage.getItem('user-info')).username)
+        //clearing textarea
+        e.target.previousElementSibling.value = '';
+
         axios.post(`https://akademia108.pl/api/social-app/post/add`,
             postContent
         )
             .then((response) => {
-                /* console.log(response); */
-                
+                /* console.log(response); */        
                 props.getPrevPosts();
             })
     }
