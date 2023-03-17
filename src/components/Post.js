@@ -15,7 +15,7 @@ function Post(props) {
 
             {/* The delete button will be displayd only under the user's own posts */}
             {props.post.user.username === /* JSON.parse(localStorage.getItem('user-info')) */props.user.username &&
-                <button className='deletePostBtn' onClick={() => { props.deletePost(props.id) }} >Delete post</button>}
+                <button className='deletePostBtn' onClick={() => { props.setDeletePostId(props.id) }} >Delete post</button>}
 
         </div>
 
