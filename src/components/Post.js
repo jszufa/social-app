@@ -34,6 +34,22 @@ function Post(props) {
     Dlaczego nie działa like - czylie kiedy isLiked = false
     to ma związek z id=1 (id defaultowego Adama)*/
 
+
+    const unfollow = (id) => {
+
+        axios.post("https://akademia108.pl/api/social-app/follows/disfollow",
+            {
+                leader_id: id,
+            })
+            .then((response) => {
+                /* console.log(response); */
+                props.getLatestPosts();
+            })
+            .catch((err) => { console.error(err) });
+    }
+
+
+
     return (
         <div className='postBlock'>
             <img src={props.post.user.avatar_url} alt="User's avatar" className='postAvatar' />
@@ -47,10 +63,18 @@ function Post(props) {
                 <button className='deletePostBtn' onClick={() => { props.setDeletePostId(props.id) }} >Delete post</button>}
 
 
-            {/* TU EDYTOWAĆ */}
-            <button className='likePostBtn' onClick={() => { likePost(props.user.id, doesUserLiked) }} >{
-                doesUserLiked ? 'Dislike' : 'Like'
-            }</button>
+            {/* Displayed only for logged in user*/}
+            {props.user &&
+                <button className='likePostBtn' onClick={() => { likePost(props.user.id, doesUserLiked) }} >
+                    {
+                        doesUserLiked ? 'Dislike' : 'Like'
+                    }
+                </button>}
+            {(props.post.user.username !== props.user.username && props.user) &&
+                <button className='followBtn, likePostBtn' onClick={() => { unfollow(props.post.user.id) }}>
+                    Unfollow
+                </button>
+            }
 
         </div>
 

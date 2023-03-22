@@ -1,0 +1,43 @@
+
+.followRecommendationsList {
+    min-height: 250px;
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 5px;
+    position: relative;
+    margin: 5px auto;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+
+}
+
+.followRecommendationsList .followAvatar {
+
+    height: 50px;
+    border-radius: 50%;
+    
+}
+
+.followRecommendationsList .followUserName {
+
+    font-weight: bold;
+}
+
+
+.followRecommendationsList .followBtn {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    color: white;
+    background-color: rgb(102, 102, 226);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 10px;
+}
+
+.followRecommendationsList .followBtn:hover {
+    background-color: #264364;
+    cursor: pointer;
+}
