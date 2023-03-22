@@ -37,31 +37,37 @@ function FollowRecommendations(props) {
 
     return (
 
-        /* PROBLEM -kiedy w tablicy rekomendacji są mniej niż 3 elementy buguje się */
+        /* PROBLEM -kiedy w tablicy rekomendacji są mniej niż 3 elementy buguje się ---> rozwiązanie "recommendations[n] &&" */
 
-        recommendations &&
+
         <ul className='followRecommendationsList'>
-            <li>
-                <img src={recommendations[0].avatar_url} alt="User's avatar" className='followAvatar' />
-                <p className='followUserName'>{recommendations[0].username}</p>
-                <button className='followBtn' onClick={() => { follow(recommendations[0].id) }}>
-                    Follow
-                </button>
-            </li>
-            <li>
-                <img src={recommendations[1].avatar_url} alt="User's avatar" className='followAvatar' />
-                <p className='followUserName'>{recommendations[1].username}</p>
-                <button className='followBtn' onClick={() => { follow(recommendations[1].id) }}>
-                    Follow
-                </button>
-            </li>
-            {<li>
-                <img src={recommendations[2].avatar_url} alt="User's avatar" className='followAvatar' />
-                <p className='followUserName'>{recommendations[2].username}</p>
-                <button className='followBtn' onClick={() => { follow(recommendations[2].id) }}>
-                    Follow
-                </button>
-            </li>}
+
+            {recommendations[0] &&
+                <li>
+                    <img src={recommendations[0].avatar_url} alt="User's avatar" className='followAvatar' />
+                    <p className='followUserName'>{recommendations[0].username}</p>
+                    <button className='followBtn' onClick={() => { follow(recommendations[0].id) }}>
+                        Follow
+                    </button>
+                </li>}
+
+            {recommendations[1] &&
+                <li>
+                    <img src={recommendations[1].avatar_url} alt="User's avatar" className='followAvatar' />
+                    <p className='followUserName'>{recommendations[1].username}</p>
+                    <button className='followBtn' onClick={() => { follow(recommendations[1].id) }}>
+                        Follow
+                    </button>
+                </li>}
+
+            {recommendations[2] &&
+                <li>
+                    <img src={recommendations[2].avatar_url} alt="User's avatar" className='followAvatar' />
+                    <p className='followUserName'>{recommendations[2].username}</p>
+                    <button className='followBtn' onClick={() => { follow(recommendations[2].id) }}>
+                        Follow
+                    </button>
+                </li>}
         </ul>
 
     );

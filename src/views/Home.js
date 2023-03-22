@@ -81,7 +81,6 @@ function Home(props) {
 
         <div className='postList'>
             <AddPost getPrevPosts={getPrevPosts} />
-            <FollowRecommendations getLatestPosts={getLatestPosts} />
             {deletePostId &&
                 <div className='confirmationBox'>
                     <p>Are you sure you want to delete the post?</p>
@@ -91,6 +90,7 @@ function Home(props) {
                     }}>Yes</button>
                     <button className='noBtn' onClick={() => setDeletePostId(null)}>No</button>
                 </div>}
+            <FollowRecommendations getLatestPosts={getLatestPosts} />
             {posts.map((post) => {
                 return (
                     <Post post={post} key={post.id} id={post.id} user={props.user} deletePost={deletePost} setDeletePostId={setDeletePostId} getLatestPosts={getLatestPosts} />
