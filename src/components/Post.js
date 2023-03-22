@@ -4,7 +4,7 @@ import './Post.css';
 
 function Post(props) {
 
-    const [likesCount, setLikesCount] = useState(0);
+    const [likesCount, setLikesCount] = useState(props.post.likes.length);
     const [doesUserLiked, setDoesUserLiked] = useState(
         props.post.likes.filter((like) => like.username === props.user.username).length !== 0
     );
@@ -17,9 +17,15 @@ function Post(props) {
                 post_id : id,
             })
             .then((response) => {
-                console.log(response);              
+                console.log(response);
+                if (response.data.liked) {
+                    setLikesCount(likesCount + 1);
+                }
+                if (!response.data.liked) {
+                    setLikesCount(likesCount - 1);
+                }           
             })
-            .catch((err) => { console.error(err.response.data) });
+            .catch((err) => { console.error(err/* .response.data */) });
     }
 
     /* działa mi zapytanie dislike a nie działa zapytanie like - pojawia się błąd
@@ -33,7 +39,7 @@ function Post(props) {
             <p className='postUserName'>{props.post.user.username}</p>
             <p className='postTime'><time dateTime={props.post.created_at}>{props.post.created_at.substring(0, 10)}</time></p>
             <p className='postContent'>{props.post.content}</p>
-            <p className='postLikes'>{props.post.likes.length}</p>
+            <p className='postLikes'>{likesCount}</p>
 
             {/* The delete button will be displayd only under the user's own posts */}
             {props.post.user.username === /* JSON.parse(localStorage.getItem('user-info')) */props.user.username &&
