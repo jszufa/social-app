@@ -10,8 +10,7 @@ function Post(props) {
     );
 
     const likePost = (id, isLiked) => {
-        console.log(props.post.likes);
-        console.log(id, isLiked);
+        /* console.log(id, isLiked); */
         axios.post("http://akademia108.pl/api/social-app/post/" + (isLiked ? "dislike" : "like"),
             {
                 post_id: id,
@@ -27,12 +26,9 @@ function Post(props) {
                     setDoesUserLiked(false);
                 }
             })
-            .catch((err) => { console.error(err/* .response.data */) });
+            .catch((err) => { console.error(err) });
     }
 
-    /* działa mi zapytanie dislike a nie działa zapytanie like - pojawia się błąd
-    Dlaczego nie działa like - czylie kiedy isLiked = false
-    to ma związek z id=1 (id defaultowego Adama)*/
 
 
     const unfollow = (id) => {
@@ -41,7 +37,7 @@ function Post(props) {
             {
                 leader_id: id,
             })
-            .then((response) => {
+            .then(() => {
                 /* console.log(response); */
                 props.getLatestPosts();
             })
@@ -65,7 +61,7 @@ function Post(props) {
 
             {/* Displayed only for logged in user*/}
             {props.user &&
-                <button className='likePostBtn' onClick={() => { likePost(props.user.id, doesUserLiked) }} >
+                <button className='likePostBtn' onClick={() => { likePost(props.post.id, doesUserLiked) }} >
                     {
                         doesUserLiked ? 'Dislike' : 'Like'
                     }

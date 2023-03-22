@@ -4,7 +4,7 @@ import './FollowRecommendations.css';
 
 function FollowRecommendations(props) {
 
-    const [recommendations, setRecommendations] = useState(null);
+    const [recommendations, setRecommendations] = useState([]);
 
     useEffect(() => { getRecommendations(); }, []);
 
@@ -12,7 +12,7 @@ function FollowRecommendations(props) {
 
         axios.post(`https://akademia108.pl/api/social-app/follows/recommendations`)
             .then((response) => {
-                console.log(response);
+                /* console.log(response); */
                 setRecommendations(response.data);
             })
             .catch((err) => { console.error(err) });
@@ -37,37 +37,19 @@ function FollowRecommendations(props) {
 
     return (
 
-        /* PROBLEM -kiedy w tablicy rekomendacji są mniej niż 3 elementy buguje się ---> rozwiązanie "recommendations[n] &&" */
-
-
+        /* mapowanie */
         <ul className='followRecommendationsList'>
-
-            {recommendations[0] &&
-                <li>
-                    <img src={recommendations[0].avatar_url} alt="User's avatar" className='followAvatar' />
-                    <p className='followUserName'>{recommendations[0].username}</p>
-                    <button className='followBtn' onClick={() => { follow(recommendations[0].id) }}>
-                        Follow
-                    </button>
-                </li>}
-
-            {recommendations[1] &&
-                <li>
-                    <img src={recommendations[1].avatar_url} alt="User's avatar" className='followAvatar' />
-                    <p className='followUserName'>{recommendations[1].username}</p>
-                    <button className='followBtn' onClick={() => { follow(recommendations[1].id) }}>
-                        Follow
-                    </button>
-                </li>}
-
-            {recommendations[2] &&
-                <li>
-                    <img src={recommendations[2].avatar_url} alt="User's avatar" className='followAvatar' />
-                    <p className='followUserName'>{recommendations[2].username}</p>
-                    <button className='followBtn' onClick={() => { follow(recommendations[2].id) }}>
-                        Follow
-                    </button>
-                </li>}
+            {recommendations.map((recUser) => {
+                return (
+                    <li key={`${recUser.id}`}>
+                        <img src={recUser.avatar_url} alt="User's avatar" className='followAvatar' />
+                        <p className='followUserName'>{recUser.username}</p>
+                        <button className='followBtn' onClick={() => { follow(recUser.id) }}>
+                            Follow
+                        </button>
+                    </li>
+                )
+            })}
         </ul>
 
     );

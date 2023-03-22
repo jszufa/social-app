@@ -90,7 +90,7 @@ function Home(props) {
                     }}>Yes</button>
                     <button className='noBtn' onClick={() => setDeletePostId(null)}>No</button>
                 </div>}
-            <FollowRecommendations getLatestPosts={getLatestPosts} />
+            {<FollowRecommendations getLatestPosts={getLatestPosts} />}
             {posts.map((post) => {
                 return (
                     <Post post={post} key={post.id} id={post.id} user={props.user} deletePost={deletePost} setDeletePostId={setDeletePostId} getLatestPosts={getLatestPosts} />
