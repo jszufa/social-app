@@ -18,7 +18,9 @@ function Home(props) {
         axios.post(`https://akademia108.pl/api/social-app/post/latest`)
             .then((response) => {
                 setPosts(response.data);
-            });
+            })
+            .catch((err)=>{console.error(err)})
+            ;
 
     }
 
@@ -33,7 +35,9 @@ function Home(props) {
                 let olderPosts = response.data;
                 setPosts(posts.concat(olderPosts));
 
-            });
+            })
+            .catch((err)=>{console.error(err)})
+            ;;
 
     }
 
@@ -47,7 +51,9 @@ function Home(props) {
                 let newPosts = response.data;
                 setPosts(newPosts.concat(posts));
 
-            });
+            })
+            .catch((err)=>{console.error(err)})
+            ;;
 
     }
 
@@ -61,7 +67,9 @@ function Home(props) {
 
                 setPosts(posts.filter((post) => post.id !== id));
 
-            });
+            })
+            .catch((err)=>{console.error(err)})
+            ;;
 
     }
 
@@ -75,10 +83,10 @@ function Home(props) {
             {deletePostId &&
                 <div className='confirmationBox'>
                     <p>Are you sure you want to delete the post?</p>
-                    <button className='yesBtn' onClick={() => { 
+                    <button className='yesBtn' onClick={() => {
                         deletePost(deletePostId);
-                        setDeletePostId(null); 
-                        }}>Yes</button>
+                        setDeletePostId(null);
+                    }}>Yes</button>
                     <button className='noBtn' onClick={() => setDeletePostId(null)}>No</button>
                 </div>}
             {posts.map((post) => {

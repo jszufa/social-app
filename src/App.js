@@ -5,9 +5,11 @@ import AppRoutes from './routes/AppRoutes';
 import axios from "axios";
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem('user-info') ? JSON.parse(localStorage.getItem('user-info')) : '');
+  /* const [user, setUser] = useState(JSON.parse(localStorage.getItem('user-info'))); */
+
   //dodałem ternary bo pojawiał się błąd przy pierwszym ładowaniu stronu w związku z JSON.parse i brakiem argumentu (pusty localStorage), zastanawiam się, czy da się to lepiej obejść.
 
+  const [user, setUser] = useState(localStorage.getItem('user-info') ? JSON.parse(localStorage.getItem('user-info')) : '');
 
   /*  console.log(user); */
 

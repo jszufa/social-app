@@ -44,7 +44,8 @@
     margin: 5px
 }
 
-.postBlock .deletePostBtn {
+.postBlock .deletePostBtn, 
+.likePostBtn {
     margin-bottom: 20px;
     margin-top: 5px;
     color: white;
@@ -52,9 +53,11 @@
     border: none;
     border-radius: 5px;
     padding: 12px 10px;
+    margin-right:10px;
 }
 
-.postBlock .deletePostBtn:hover {
+.postBlock .deletePostBtn:hover, 
+.likePostBtn:hover {
     background-color: #264364;
     cursor: pointer;
 }
