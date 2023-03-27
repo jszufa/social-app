@@ -83,8 +83,8 @@ function Home(props) {
         <div className='postList'>
             <AddPost getPrevPosts={getPrevPosts} />
 
-            <Popup setShowPopup={props.setShowPopup} showPopup={props.showPopup} setUser={props.setUser} user={props.user}/>
-            
+            <Popup setShowPopup={props.setShowPopup} showPopup={props.showPopup} setUser={props.setUser} user={props.user} />
+
             {deletePostId &&
                 <div className='confirmationBox'>
                     <p>Are you sure you want to delete the post?</p>
@@ -96,7 +96,7 @@ function Home(props) {
                 </div>}
 
             {props.user &&
-            <FollowRecommendations getLatestPosts={getLatestPosts} />}
+                <FollowRecommendations getLatestPosts={getLatestPosts} />}
 
             {/* POST LIST */}
             {posts.map((post) => {

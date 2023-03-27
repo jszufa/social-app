@@ -36,7 +36,7 @@ function LoginForm(props) {
                     localStorage.setItem('user-info', JSON.stringify(response.data))
 
                     setLoginMessage('Zalogowano :)');
-                    
+
                     //zamykam popup (jeśli jest akurat przez route Login - to wtedy ta operacja jest w sumie niepotrzebna)
                     props.setShowPopup(false);
 

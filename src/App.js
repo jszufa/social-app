@@ -15,10 +15,12 @@ function App() {
 
   const [showPopup, setShowPopup] = useState(false);
 
+
   useEffect(
     () => {
       const timer = setTimeout(
         () => {
+          /* Uruchamiam wyświetlanie pop-upa tylko jeśli nikt nie jest akurat zalogowany*/
           if (!user) { setShowPopup(true) }
         },
         5000

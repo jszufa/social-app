@@ -1,7 +1,7 @@
 .loginForm {
-    border: 1px solid rgb(76, 76, 190);
     width: 60%;
     margin: 20px auto;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

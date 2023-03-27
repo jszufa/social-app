@@ -27,3 +27,16 @@
 .popupWindow span:hover {
     color: red;
 }
+
+.popupWindow p {
+    margin-top: 0;
+}
+
+.popupWindow .nav-link {
+    text-decoration: none;
+    padding: 0 5px;
+    color: black;
+    display: inline;
+    font-weight: bold;
+}
+

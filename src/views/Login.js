@@ -8,7 +8,7 @@ function Login(props) {
     return (
 
         <div className="loginFrame">
-            <LoginForm setUser={props.setUser} user={props.user} setShowPopup={props.setShowPopup}/>
+            <LoginForm setUser={props.setUser} user={props.user} setShowPopup={props.setShowPopup} />
         </div>
     )
 }
