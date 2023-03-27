@@ -3,6 +3,7 @@ import axios from "axios";
 import Post from '../components/Post';
 import AddPost from '../components/AddPost';
 import FollowRecommendations from '../components/FollowRecommendations';
+import Popup from './Popup';
 
 import "./Home.css"
 
@@ -81,6 +82,9 @@ function Home(props) {
 
         <div className='postList'>
             <AddPost getPrevPosts={getPrevPosts} />
+
+            <Popup setShowPopup={props.setShowPopup} showPopup={props.showPopup}/>
+            
             {deletePostId &&
                 <div className='confirmationBox'>
                     <p>Are you sure you want to delete the post?</p>
@@ -90,7 +94,11 @@ function Home(props) {
                     }}>Yes</button>
                     <button className='noBtn' onClick={() => setDeletePostId(null)}>No</button>
                 </div>}
-            {<FollowRecommendations getLatestPosts={getLatestPosts} />}
+
+            {props.user &&
+            <FollowRecommendations getLatestPosts={getLatestPosts} />}
+
+            {/* POST LIST */}
             {posts.map((post) => {
                 return (
                     <Post post={post} key={post.id} id={post.id} user={props.user} deletePost={deletePost} setDeletePostId={setDeletePostId} getLatestPosts={getLatestPosts} />

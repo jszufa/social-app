@@ -1,0 +1,29 @@
+.popupWindow {
+    
+    width: 40%;
+    min-width: 200px;
+    background-color: rgb(142, 173, 184);
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 100;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.popupWindow span {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.popupWindow span:hover {
+    color: red;
+}
