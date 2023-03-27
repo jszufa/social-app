@@ -15,17 +15,19 @@ function App() {
 
   const [showPopup, setShowPopup] = useState(false);
 
-
-  useEffect(() => {
-    const timer = setTimeout(
-        () => { setShowPopup(true) },
+  useEffect(
+    () => {
+      const timer = setTimeout(
+        () => {
+          if (!user) { setShowPopup(true) }
+        },
         5000
-    );
+      );
 
-    return (() => {
+      return (() => {
         clearTimeout(timer)
-    })
-}, []);
+      })
+    }, []);
 
 
   return (

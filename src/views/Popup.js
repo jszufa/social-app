@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Popup.css';
+import LoginForm from '../components/LoginForm';
 
 function Popup(props) {
 
@@ -12,6 +13,7 @@ function Popup(props) {
             <div className='popupWindow'>
                 <span onClick={() => props.setShowPopup(false)}>X</span>
                 <h2>Already have an account?</h2>
+                <LoginForm setUser={props.setUser} user={props.user} setShowPopup={props.setShowPopup} />
                 <p>No? Create account! SignUp</p>
             </div>
         )

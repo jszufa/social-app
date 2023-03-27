@@ -15,8 +15,8 @@ function AppRoutes(props) {
 
     return (
         <Routes>
-            <Route path="/" element={<Home user={props.user} setShowPopup={props.setShowPopup} showPopup={props.showPopup} />} />
-            <Route path="login" element={<Login setUser={props.setUser} user={props.user} />} />
+            <Route path="/" element={<Home setUser={props.setUser} user={props.user} setShowPopup={props.setShowPopup} showPopup={props.showPopup} />} />
+            <Route path="login" element={<Login setUser={props.setUser} user={props.user} setShowPopup={props.setShowPopup} />} />
             <Route path="signup" element={<Signup />} />
         </Routes>
     )

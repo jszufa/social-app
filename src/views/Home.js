@@ -83,7 +83,7 @@ function Home(props) {
         <div className='postList'>
             <AddPost getPrevPosts={getPrevPosts} />
 
-            <Popup setShowPopup={props.setShowPopup} showPopup={props.showPopup}/>
+            <Popup setShowPopup={props.setShowPopup} showPopup={props.showPopup} setUser={props.setUser} user={props.user}/>
             
             {deletePostId &&
                 <div className='confirmationBox'>
