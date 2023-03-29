@@ -81,7 +81,8 @@ function Home(props) {
     return (
 
         <div className='postList'>
-            <AddPost getPrevPosts={getPrevPosts} />
+            {props.user &&
+            <AddPost getPrevPosts={getPrevPosts} />}
 
             <Popup setShowPopup={props.setShowPopup} showPopup={props.showPopup} setUser={props.setUser} user={props.user} />
 

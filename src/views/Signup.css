@@ -11,14 +11,18 @@
 }
 
 .signupForm .signupMsg {
-    /* flex-basis: 80%; */
-    margin-top: 0px;
-    
+    flex-basis: 80%;
+    margin: 0px;
+
+}
+
+.signupForm .signUpHeader {
+    flex-basis: 80%;
 }
 
 .signupForm input {
     flex-basis: 80%;
-    margin-bottom: 20px;
+    margin: 10px auto;
     line-height: 2;
 }
 
@@ -29,7 +33,7 @@
     margin-top: 20px;
     text-transform: uppercase;
     color: white;
-    background-color: rgb(76, 76, 190);
+    background-color: rgb(76, 163, 190);
     border: none;
     border-radius: 10px;
     padding: 12px 30px;
@@ -39,4 +43,12 @@
 
     background-color: #264364;
     cursor: pointer;
+}
+
+.signupForm .signupBtn:disabled {
+    background-color: #7a8188;
+}
+
+.signupForm .break {
+    flex-basis: 100%;
 }

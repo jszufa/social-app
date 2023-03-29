@@ -3,9 +3,8 @@ import './Signup.css';
 import axios from 'axios';
 import { NavLink } from "react-router-dom";
 
-function Signup(props) {
+function Signup() {
 
-    /* Czy stany w ramach różnych komponentów można nazywać się tak samo, czy lepiej różnie? */
     const [formData, setFormData] = useState({});
     const [errors, setErrors] = useState({});
     const [signUpMessage, setSignUpMessage] = useState('');
@@ -14,7 +13,7 @@ function Signup(props) {
 
     const handleInputChange = (e) => {
         const target = e.target;
-        /* console.log(e.target.name) */
+
         const name = target.name;
 
         setFormData({
@@ -96,8 +95,6 @@ function Signup(props) {
             });
         }
 
-
-
         /* Password */
         if (!formData.password || formData.password.length < 6) {
 
@@ -168,11 +165,17 @@ function Signup(props) {
             axios
                 .post("http://akademia108.pl/api/social-app/user/signup", newUser)
                 .then((response) => {
-                    // your code :)
-                    setSignUpDone(true);
-                    setSignUpMessage('Account created! :)');
+
+                    if (response.data.signedup) {
+                        setSignUpMessage('Account created :)');
+                        setSignUpDone(true);
+                    }
+                    else {
+                        setSignUpMessage(response.data.message.username[0]);
+                    }
 
                     console.log(response.data);
+
                 })
                 .catch((error) => {
                     console.error(error);
@@ -182,13 +185,12 @@ function Signup(props) {
     }
 
 
-
-
     return (
 
         <div className="signup">
-            <h2>Signup</h2>
+
             <form className='signupForm' >
+
                 <h2 className='signUpHeader'>{signUpMessage}</h2>
 
                 <input type='text' placeholder='User name' name='username' onChange={(e) => { handleInputChange(e) }}></input>
@@ -197,18 +199,23 @@ function Signup(props) {
                 <input type='email' placeholder='Email' name='email' onChange={(e) => { handleInputChange(e) }}></input>
                 <p className='signupMsg' >{errors.email}</p>
 
-                <input type='text' placeholder='Password' name='password' onChange={(e) => { handleInputChange(e) }}></input>
+                <input type='password' placeholder='Password' name='password' onChange={(e) => { handleInputChange(e) }}></input>
                 <p className='signupMsg' >{errors.password}</p>
 
-                <input type='text' placeholder='Repeat password' name='repeatPassword' onChange={(e) => { handleInputChange(e) }}></input>
+                <input type='password' placeholder='Repeat password' name='repeatPassword' onChange={(e) => { handleInputChange(e) }}></input>
                 <p className='signupMsg' >{errors.repeatPassword}</p>
 
-                <button className='signupBtn' onClick={(e) => { handleSubmit(e) }}>Sign Up</button>
+                <button className='signupBtn' disabled={signUpDone} onClick={(e) => { handleSubmit(e) }}>Sign Up</button>
+
+                <div className='break'></div>
+
                 {signUpDone &&
-                    <NavLink className='nav-link' to="/signup">
+                    <NavLink className='nav-link' to="/login">
                         <button className='signupBtn'>Przejdź do logowania</button>
                     </NavLink>}
+
             </form>
+
         </div>
     )
 }
