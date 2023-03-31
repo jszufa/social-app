@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './Signup.css';
 import axios from 'axios';
 import { NavLink } from "react-router-dom";
@@ -10,6 +10,10 @@ function Signup() {
     const [signUpMessage, setSignUpMessage] = useState('');
     const [signUpDone, setSignUpDone] = useState(false);
 
+    const ref1 = useRef(null);
+    const ref2 = useRef(null);
+    const ref3 = useRef(null);
+    const ref4 = useRef(null);
 
     const handleInputChange = (e) => {
         const target = e.target;
@@ -169,6 +173,11 @@ function Signup() {
                     if (response.data.signedup) {
                         setSignUpMessage('Account created :)');
                         setSignUpDone(true);
+                        ref1.current.value = "";
+                        ref2.current.value = "";
+                        ref3.current.value = "";
+                        ref4.current.value = "";
+
                     }
                     else {
                         setSignUpMessage(response.data.message.username[0]);
@@ -189,20 +198,20 @@ function Signup() {
 
         <div className="signup">
 
-            <form className='signupForm' >
+            <form className='signupForm'>
 
                 <h2 className='signUpHeader'>{signUpMessage}</h2>
 
-                <input type='text' placeholder='User name' name='username' onChange={(e) => { handleInputChange(e) }}></input>
+                <input ref={ref1} type='text' placeholder='User name' name='username' onChange={(e) => { handleInputChange(e) }}></input>
                 <p className='signupMsg' >{errors.username}</p>
 
-                <input type='email' placeholder='Email' name='email' onChange={(e) => { handleInputChange(e) }}></input>
+                <input ref={ref2} type='email' placeholder='Email' name='email' onChange={(e) => { handleInputChange(e) }}></input>
                 <p className='signupMsg' >{errors.email}</p>
 
-                <input type='password' placeholder='Password' name='password' onChange={(e) => { handleInputChange(e) }}></input>
+                <input ref={ref3} type='password' placeholder='Password' name='password' onChange={(e) => { handleInputChange(e) }}></input>
                 <p className='signupMsg' >{errors.password}</p>
 
-                <input type='password' placeholder='Repeat password' name='repeatPassword' onChange={(e) => { handleInputChange(e) }}></input>
+                <input ref={ref4} type='password' placeholder='Repeat password' name='repeatPassword' onChange={(e) => { handleInputChange(e) }}></input>
                 <p className='signupMsg' >{errors.repeatPassword}</p>
 
                 <button className='signupBtn' disabled={signUpDone} onClick={(e) => { handleSubmit(e) }}>Sign Up</button>
