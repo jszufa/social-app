@@ -15,9 +15,9 @@ function AppRoutes(props) {
 
     return (
         <Routes>
-            <Route path="/" element={<Home setUser={props.setUser} user={props.user} setShowPopup={props.setShowPopup} showPopup={props.showPopup} />} />
-            <Route path="login" element={<Login setUser={props.setUser} user={props.user} setShowPopup={props.setShowPopup} />} />
-            <Route path="signup" element={<Signup />} />
+            <Route path="social-app/" element={<Home setUser={props.setUser} user={props.user} setShowPopup={props.setShowPopup} showPopup={props.showPopup} />} />
+            <Route path="social-app/login" element={<Login setUser={props.setUser} user={props.user} setShowPopup={props.setShowPopup} />} />
+            <Route path="social-app/signup" element={<Signup />} />
         </Routes>
     )
 }
